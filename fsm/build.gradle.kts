@@ -27,6 +27,8 @@ publishing {
         artifact(tasks["sourcesJar"])
         artifact(tasks["javadocJar"])
 
+        artifactId = "event-fsm"
+
         pom {
             name.set("Event FSM")
             description.set("An extension of the Event API to create and use finite state machines for events.")
