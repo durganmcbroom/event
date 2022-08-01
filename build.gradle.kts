@@ -44,7 +44,7 @@ subprojects {
         repositories {
             maven {
                 name = "github"
-                url = uri("https://maven.pkg.github.com/durganmcbroom/artifact-resolver")
+                url = uri("https://maven.pkg.github.com/durganmcbroom/event")
 
                 credentials {
                     username = project.findProperty("maven.user") as String?
