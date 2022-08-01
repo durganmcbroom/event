@@ -1,5 +1,7 @@
 plugins {
     kotlin("jvm") version "1.7.10"
+    id("maven-publish")
+    id("org.jetbrains.dokka") version "1.4.32"
 }
 
 group = "com.durganmcbroom"
@@ -23,11 +25,12 @@ tasks.compileKotlin {
 
 subprojects {
     apply(plugin = "org.jetbrains.kotlin.jvm")
+    apply(plugin = "maven-publish")
+    apply(plugin = "org.jetbrains.dokka")
 
     repositories {
         mavenCentral()
     }
-
 
     tasks.compileKotlin {
         destinationDirectory.set(tasks.compileJava.get().destinationDirectory.asFile.get())

@@ -19,13 +19,14 @@ class EventStageTests {
             }
         }
 
-
         val pipe = EventPipeline(firstStage)
 
-        DispatchRegistry.register(TestEventDispatchProvider())
+        val subscriber = MutableSubscriberCallback<TestEvent>()
 
-        DispatchRegistry.subscribeTo(TestEventDispatcher::class, true, pipe)
+        val dispatcher = TestEventDispatcher(subscriber)
 
-        (DispatchRegistry.get(TestEventDispatcher::class) as TestEventDispatcher).dispatch()
+        subscriber.subscribe(pipe)
+
+        dispatcher.dispatch()
     }
 }

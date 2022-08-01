@@ -1,17 +1,19 @@
 package com.durganmcbroom.event.api.test
 
-import com.durganmcbroom.event.api.DispatchRegistry
+import com.durganmcbroom.event.api.MutableSubscriberCallback
 import kotlin.test.Test
 
 class EventDispatchTests {
     @Test
     fun `Test event dispatching`() {
-        DispatchRegistry.register(TestEventDispatchProvider())
+        val subscriber = MutableSubscriberCallback<TestEvent>()
 
-        DispatchRegistry.subscribeTo(TestEventDispatcher::class, true) {
+        val dispatcher = TestEventDispatcher(subscriber)
+
+        subscriber.subscribe {
             println(it.value)
         }
 
-        (DispatchRegistry.get(TestEventDispatcher::class) as TestEventDispatcher).dispatch()
+        dispatcher.dispatch()
     }
 }
