@@ -23,7 +23,7 @@ tasks.compileKotlin {
     kotlinOptions.jvmTarget = "1.8"
 }
 
-val publishAll by tasks.registering {
+tasks.register("publishAll") {
     val taskName = "publishAllPublicationsToGithubRepository"
 
     dependsOn(project(":fsm").tasks[taskName])
@@ -50,6 +50,7 @@ subprojects {
                     username = project.findProperty("maven.user") as String?
                     password = project.findProperty("maven.key") as String?
                 }
+
                 authentication {
                     create<BasicAuthentication>("basic")
                 }

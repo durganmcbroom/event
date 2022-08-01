@@ -22,7 +22,7 @@ task<Jar>("javadocJar") {
 }
 
 publishing {
-    publications.withType<MavenPublication> {
+    publications.create<MavenPublication>("event-fsm") {
         from(components["java"])
         artifact(tasks["sourcesJar"])
         artifact(tasks["javadocJar"])

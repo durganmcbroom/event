@@ -12,7 +12,7 @@ task<Jar>("javadocJar") {
 }
 
 publishing {
-    publications.withType<MavenPublication> {
+    publications.create<MavenPublication>("event-api") {
         from(components["java"])
         artifact(tasks["sourcesJar"])
         artifact(tasks["javadocJar"])
