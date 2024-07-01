@@ -14,7 +14,7 @@ class FSMTests {
             return y in (top + 1) until bottom && left < x && right > x
         }
 
-        val fsm = MutableFSM(true).apply {
+        val fsm = MutableFSM(true) {
             //STATES
             val initial = of("Starting state")
             val inBox = of("Mouse inside box")

@@ -10,6 +10,10 @@ public class MutableFSM(
     public val ref: Reference = Reference(this)
     private var nameId = 0
 
+    public constructor(debug: Boolean = false, configure: MutableFSM.() -> Unit) : this(debug) {
+        configure()
+    }
+
     private fun nextName(): String = "unnamed@${nameId++}"
 
     public fun of(name: String = nextName()): MutableEventState =

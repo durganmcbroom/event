@@ -7,8 +7,6 @@ repositories {
 
 dependencies {
     implementation(project(":api"))
-//     https://mvnrepository.com/artifact/org.jetbrains.kotlinx/kotlinx-coroutines-core
-//    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
 }
 
 task<Jar>("sourcesJar") {

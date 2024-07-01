@@ -23,14 +23,6 @@ tasks.compileKotlin {
     kotlinOptions.jvmTarget = "1.8"
 }
 
-val publishAll by tasks.registering {
-    val taskName = "publishAllPublicationsToGithubRepository"
-
-    dependsOn(project(":fsm").tasks[taskName])
-    dependsOn(project(":api").tasks[taskName])
-}
-
-
 subprojects {
     apply(plugin = "org.jetbrains.kotlin.jvm")
     apply(plugin = "maven-publish")
@@ -43,8 +35,7 @@ subprojects {
     publishing {
         repositories {
             maven {
-                name = "github"
-                url = uri("https://maven.pkg.github.com/durganmcbroom/artifact-resolver")
+                url = uri("https://maven.extframework.dev/snapshots")
 
                 credentials {
                     username = project.findProperty("maven.user") as String?
