@@ -18,6 +18,8 @@ publishing {
             artifact(tasks["sourcesJar"])
             artifact(tasks["javadocJar"])
 
+            artifactId = "event-api"
+
             pom {
                 name.set("Event Api")
                 description.set("An Api for receiving, dispatching, transforming all other things related to events!")
