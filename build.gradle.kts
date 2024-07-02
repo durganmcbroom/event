@@ -38,8 +38,14 @@ subprojects {
                 url = uri("https://maven.extframework.dev/snapshots")
 
                 credentials {
-                    username = project.findProperty("maven.user") as String?
-                    password = project.findProperty("maven.key") as String?
+                    username = project.findProperty("maven.user") as String? ?: run {
+                        logger.warn("No maven.user credential found!")
+                        null
+                    }
+                    password = project.findProperty("maven.key") as String? ?: run {
+                        logger.warn("No maven.key credential found!")
+                        null
+                    }
                 }
                 authentication {
                     create<BasicAuthentication>("basic")
